@@ -1,0 +1,98 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Link from "../components/Link.astro";
+---
+
+<Layout>
+  <header>
+    <h1 class="text-xl font-bold text-neutral-900">Nicholas Ly</h1>
+    <ul class="mt-2">
+      <li class="text-sm text-neutral-700">
+        send me an email: <Link
+          target="_blank"
+          href="mailto:hello@nicholasly.com">hello@nicholasly.com</Link
+        >
+      </li>
+      <li class="text-sm text-neutral-700">
+        follow me on github: <Link
+          target="_blank"
+          href="https://github.com/nicholasdly">nicholasdly</Link
+        >
+      </li>
+      <li class="text-sm text-neutral-700">
+        follow me on twitter: <Link target="_blank" href="https://x.com/nichdly"
+          >@nichdly</Link
+        >
+      </li>
+    </ul>
+  </header>
+  <section id="about">
+    <article class="space-y-2 text-neutral-700">
+      <p>
+        I'm a software engineer, writer, and open-source enthusiast. I currently
+        work at <Link target="_blank" href="https://vervint.com/">Vervint</Link
+        >, where my main focus is building high-quality, performant, and
+        accessible websites for our clients.
+      </p>
+      <p>
+        Outside of my day job, programming is still a passion of mine. I
+        actively build and contrbute to open-source projects, and enjoy
+        hackathons and competitive programming as a hobby.
+      </p>
+      <p>
+        Recently, I've been building <Link
+          target="_blank"
+          href="https://bookclub.social/">Bookclub</Link
+        >—the social platform for bookworms and a modern alternative to
+        Goodreads.
+      </p>
+    </article>
+  </section>
+  <section id="education">
+    <h2 class="mb-2 text-lg font-semibold text-neutral-900">Education</h2>
+    <ul class="space-y-2">
+      <li class="flex flex-col">
+        <h3 class="font-medium text-neutral-800">Michigan State University</h3>
+        <p class="text-sm text-neutral-700">
+          Bachelor of Science, Computer Science
+        </p>
+        <p class="text-sm text-neutral-600">Aug 2019 - May 2023</p>
+      </li>
+    </ul>
+  </section>
+  <section id="experience">
+    <h2 class="mb-2 text-lg font-semibold text-neutral-900">Experience</h2>
+    <ul class="space-y-2">
+      <li class="flex flex-col">
+        <h3 class="font-medium text-neutral-800">
+          Associate Software Engineer <span class="text-neutral-700"
+            >— Vervint</span
+          >
+        </h3>
+        <p class="text-sm text-neutral-600">Sep 2023 - Present</p>
+      </li>
+      <li class="flex flex-col">
+        <h3 class="font-medium text-neutral-800">
+          Web Development Intern <span class="text-neutral-700">— Vervint</span>
+        </h3>
+        <p class="text-sm text-neutral-600">May 2023 - Sep 2023</p>
+      </li>
+    </ul>
+  </section>
+  <section id="accolades">
+    <h2 class="mb-2 text-lg font-semibold text-neutral-900">Accolades</h2>
+    <ul class="space-y-2">
+      <li class="flex flex-col">
+        <h3 class="font-medium text-neutral-800">SpartaHack 8</h3>
+        <p class="text-sm text-neutral-700">
+          Best Web App — <Link
+            target="_blank"
+            href="https://devpost.com/software/momentum-flsu7o"
+            ><span class="italic">Momentum</span></Link
+          >
+        </p>
+        <p class="text-sm text-neutral-600">January 2023</p>
+      </li>
+    </ul>
+  </section>
+</Layout>
