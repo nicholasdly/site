@@ -1,0 +1,17 @@
+---
+import { EMAIL, SITE_TITLE } from "../consts";
+---
+
+<header class="h-10 px-4 py-2">
+  <nav class="flex items-center justify-between">
+    <div>
+      <a href="/" class="font-medium text-neutral-500 hover:underline">
+        {SITE_TITLE}
+      </a>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="/posts" class="font-medium hover:underline">posts</a>
+      <a href={`mailto:${EMAIL}`} class="font-medium hover:underline">email</a>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,37 @@
+---
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <main
+    class="mx-auto flex h-[calc(100svh-40px)] max-w-xs flex-col justify-center gap-4 p-4"
+  >
+    <p>
+      miniblog is an opinionated and extremely minimal blogging template built
+      with <a
+        href="https://astro.build/"
+        target="_blank"
+        class="text-blue-500 underline">Astro</a
+      > and <a
+        href="https://tailwindcss.com/"
+        target="_blank"
+        class="text-blue-500 underline">Tailwind</a
+      >.
+    </p>
+    <p>
+      Heavily inspired by <a
+        href="https://jrmyphlmn.com/"
+        target="_blank"
+        class="text-blue-500 underline">jrmyphlmn.com</a
+      >.
+    </p>
+    <p>
+      To use this template, check out the <a
+        href="https://github.com/nicholasdly/miniblog?tab=readme-ov-file"
+        target="_blank"
+        class="text-blue-500 underline">GitHub repository</a
+      >.
+    </p>
+  </main>
+</Layout>
