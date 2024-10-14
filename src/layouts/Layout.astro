@@ -1,7 +1,5 @@
 ---
-const title = "Nicholas Ly";
-const description =
-  "Nicholas Ly is a software engineer, writer, and open-source enthusiast.";
+import { name, description } from "../data";
 ---
 
 <html lang="en">
@@ -11,14 +9,14 @@ const description =
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}</title>
+    <title>{name}</title>
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={name} />
     <meta property="og:description" content={description} />
 
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={title} />
+    <meta property="twitter:title" content={name} />
     <meta property="twitter:description" content={description} />
   </head>
   <body class="antialiased">

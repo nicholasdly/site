@@ -1,11 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Link from "../components/Link.astro";
+
+import { name, education, experience, accolades } from "../data";
 ---
 
 <Layout>
   <header>
-    <h1 class="text-xl font-bold text-neutral-900">Nicholas Ly</h1>
+    <h1 class="text-xl font-bold text-neutral-900">{name}</h1>
     <ul class="mt-2">
       <li class="text-sm text-neutral-700">
         send me an email: <Link
@@ -51,48 +53,50 @@ import Link from "../components/Link.astro";
   <section id="education">
     <h2 class="mb-2 text-lg font-semibold text-neutral-900">Education</h2>
     <ul class="space-y-2">
-      <li class="flex flex-col">
-        <h3 class="font-medium text-neutral-800">Michigan State University</h3>
-        <p class="text-sm text-neutral-700">
-          Bachelor of Science, Computer Science
-        </p>
-        <p class="text-sm text-neutral-600">Aug 2019 - May 2023</p>
-      </li>
+      {
+        education.map((item) => (
+          <li class="flex flex-col">
+            <h3 class="font-medium text-neutral-800">{item.institution}</h3>
+            <p class="text-sm text-neutral-700">{item.highlight}</p>
+            <p class="text-sm text-neutral-600">{item.duration}</p>
+          </li>
+        ))
+      }
     </ul>
   </section>
   <section id="experience">
     <h2 class="mb-2 text-lg font-semibold text-neutral-900">Experience</h2>
     <ul class="space-y-2">
-      <li class="flex flex-col">
-        <h3 class="font-medium text-neutral-800">
-          Associate Software Engineer <span class="text-neutral-700"
-            >— Vervint</span
-          >
-        </h3>
-        <p class="text-sm text-neutral-600">Sep 2023 - Present</p>
-      </li>
-      <li class="flex flex-col">
-        <h3 class="font-medium text-neutral-800">
-          Web Development Intern <span class="text-neutral-700">— Vervint</span>
-        </h3>
-        <p class="text-sm text-neutral-600">May 2023 - Sep 2023</p>
-      </li>
+      {
+        experience.map((item) => (
+          <li class="flex flex-col">
+            <h3 class="font-medium text-neutral-800">
+              {item.role}{" "}
+              <span class="text-neutral-700">— {item.employer}</span>
+            </h3>
+            <p class="text-sm text-neutral-600">{item.duration}</p>
+          </li>
+        ))
+      }
     </ul>
   </section>
   <section id="accolades">
     <h2 class="mb-2 text-lg font-semibold text-neutral-900">Accolades</h2>
     <ul class="space-y-2">
-      <li class="flex flex-col">
-        <h3 class="font-medium text-neutral-800">SpartaHack 8</h3>
-        <p class="text-sm text-neutral-700">
-          Best Web App — <Link
-            target="_blank"
-            href="https://devpost.com/software/momentum-flsu7o"
-            ><span class="italic">Momentum</span></Link
-          >
-        </p>
-        <p class="text-sm text-neutral-600">January 2023</p>
-      </li>
+      {
+        accolades.map((item) => (
+          <li class="flex flex-col">
+            <h3 class="font-medium text-neutral-800">{item.title}</h3>
+            <p class="text-sm text-neutral-700">
+              {item.source} —{" "}
+              <Link target="_blank" href={item.url}>
+                <span class="italic">{item.name}</span>
+              </Link>
+            </p>
+            <p class="text-sm text-neutral-600">{item.duration}</p>
+          </li>
+        ))
+      }
     </ul>
   </section>
 </Layout>
