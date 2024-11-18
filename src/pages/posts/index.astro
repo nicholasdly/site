@@ -16,9 +16,9 @@ const posts = collection.sort(
       {
         posts.map((post) => (
           <li>
-            <a href={`/posts/${post.slug}/`} class="group flex justify-between">
+            <a href={`/posts/${post.slug}`} class="group flex justify-between gap-3">
               <span class="group-hover:underline">{post.data.title}</span>
-              <span class="text-neutral-500">{formatDate(post.data.date)}</span>
+              <span class="text-neutral-500 text-nowrap">{formatDate(post.data.date)}</span>
             </a>
           </li>
         ))
