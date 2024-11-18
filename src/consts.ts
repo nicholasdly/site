@@ -3,4 +3,5 @@
 
 export const SITE_URL = "https://nicholasly.com";
 export const SITE_TITLE = "Nicholas Ly";
-export const SITE_DESCRIPTION = "Nicholas Ly is a software engineer, writer, and open-source enthusiast.";
+export const SITE_DESCRIPTION =
+  "Nicholas Ly is a software engineer, writer, and open-source enthusiast.";
