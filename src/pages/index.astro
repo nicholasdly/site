@@ -3,10 +3,12 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <main
-    class="mx-auto flex h-[calc(100svh-40px)] max-w-sm flex-col justify-center gap-4 p-4"
-  >
+<Layout
+  title={SITE_TITLE}
+  description={SITE_DESCRIPTION}
+  className="flex h-svh max-w-sm flex-col justify-center"
+>
+  <main class="space-y-4">
     <p>
       Hi, I'm Nicholas Ly. I'm a software engineer, writer, and open source
       enthusiast.
@@ -19,7 +21,7 @@ import Layout from "../layouts/Layout.astro";
       >, where my main focus is building high quality, performant, and
       accessible websites for clients.
     </p>
-    <ul class="mt-4 text-sm">
+    <ul class="text-sm">
       <li>
         Send me an email: <a
           href="mailto:nichdly@gmail.com"

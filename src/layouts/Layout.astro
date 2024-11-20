@@ -1,17 +1,25 @@
 ---
 import { ViewTransitions } from "astro:transitions";
+import type { ClassValue } from "clsx";
 import Header from "../components/Header.astro";
+import { cn } from "../lib/utils";
 import "../styles/global.css";
 
 interface Props {
   title: string;
   description: string;
   image?: string;
+  className?: ClassValue;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/blog-placeholder.svg" } = Astro.props;
+const {
+  title,
+  description,
+  image = "/blog-placeholder.svg",
+  className,
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -22,7 +30,7 @@ const { title, description, image = "/blog-placeholder.svg" } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Font preloads -->
+    <!-- Fonts -->
     <link
       rel="preload"
       href="/fonts/geist-variable.woff2"
@@ -63,7 +71,9 @@ const { title, description, image = "/blog-placeholder.svg" } = Astro.props;
     <ViewTransitions />
   </head>
   <body class="font-sans text-neutral-900 antialiased">
-    <Header />
-    <slot />
+    <div class={cn("max-w-xl mx-auto p-4", className)}>
+      <Header />
+      <slot />
+    </div>
   </body>
 </html>
