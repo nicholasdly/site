@@ -11,7 +11,8 @@ const posts = collection.sort(
   {
     posts.map((post) => (
       <li>
-        <a href={`/posts/${post.slug}`}>{post.data.title}</a>
+        <a href={`/posts/${post.slug}`}>{post.data.title}</a> —{" "}
+        {post.data.description}
       </li>
     ))
   }
