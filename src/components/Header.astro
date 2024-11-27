@@ -1,15 +1,24 @@
-<header class="mb-6" transition:name="header">
-  <nav class="flex items-center gap-4">
+<header transition:name="header">
+  <nav class="space-x-4">
+    <a href="/">home</a>
     <a
-      href="/"
-      class="font-medium text-neutral-500 hover:text-neutral-900 hover:underline"
+      href="https://www.linkedin.com/in/nicholasdly/"
+      target="_blank"
+      rel="noopener noreferrer">linkedin</a
     >
-      Home
-    </a>
     <a
-      href="/posts"
-      class="font-medium text-neutral-500 hover:text-neutral-900 hover:underline"
-      >Posts</a
+      href="https://github.com/nicholasdly"
+      target="_blank"
+      rel="noopener noreferrer">github</a
+    >
+    <a href="https://x.com/nichdly" target="_blank" rel="noopener noreferrer"
+      >twitter</a
     >
   </nav>
 </header>
+
+<style>
+  a {
+    @apply text-gray-500 hover:text-gray-800;
+  }
+</style>

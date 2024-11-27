@@ -1,24 +1,20 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import type { ClassValue } from "clsx";
 import Header from "../components/Header.astro";
-import { cn } from "../lib/utils";
 import "../styles/global.css";
 
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   image?: string;
-  className?: ClassValue;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const {
-  title,
-  description,
+  title = "Nicholas Ly",
+  description = "Software engineer, writer, and open-source enthusiast.",
   image = "/blog-placeholder.svg",
-  className,
 } = Astro.props;
 ---
 
@@ -70,10 +66,12 @@ const {
 
     <ViewTransitions />
   </head>
-  <body class="font-sans text-neutral-900 antialiased">
-    <div class={cn("max-w-xl mx-auto p-4", className)}>
+  <body class="bg-white font-sans text-gray-900">
+    <div class="mx-auto flex w-full max-w-xl flex-col p-6 md:pt-8">
       <Header />
-      <slot />
+      <main>
+        <slot />
+      </main>
     </div>
   </body>
 </html>

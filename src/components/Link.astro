@@ -1,0 +1,15 @@
+---
+const props = Astro.props;
+---
+
+{
+  props.href?.startsWith("/") || props.href?.startsWith("#") ? (
+    <a {...props}>
+      <slot />
+    </a>
+  ) : (
+    <a {...props} target="_blank" rel="noopener noreferrer">
+      <slot />
+    </a>
+  )
+}
