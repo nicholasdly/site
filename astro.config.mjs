@@ -16,4 +16,7 @@ export default defineConfig({
       theme: "catppuccin-latte",
     },
   },
+  prefetch: {
+    prefetchAll: true,
+  },
 });
