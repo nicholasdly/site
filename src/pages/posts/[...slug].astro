@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import Footer from "../../components/Footer.astro";
 import Link from "../../components/Link.astro";
 import Layout from "../../layouts/Layout.astro";
 
@@ -21,4 +22,5 @@ const { Content } = await post.render();
   image={post.data.image}
 >
   <Content components={{ a: Link }} />
+  <Footer />
 </Layout>
