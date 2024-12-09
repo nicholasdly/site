@@ -25,6 +25,9 @@
   p {
     @apply mb-6 text-gray-800;
   }
+  strong {
+    @apply font-semibold;
+  }
   ol {
     @apply mb-6 list-decimal space-y-2 pl-5 text-gray-800;
   }
