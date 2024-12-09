@@ -15,15 +15,12 @@ const posts = collection.sort(
 );
 ---
 
-<ul class="space-y-2">
+<ul>
   {
     posts.map((post) => (
       <li>
         <a href={`/posts/${post.slug}`}>{post.data.title}</a>
         <span> — {post.data.description}</span>
-        <span class="ml-1 text-nowrap text-sm text-gray-400">
-          {formatDate(post.data.date)}
-        </span>
       </li>
     ))
   }

@@ -22,5 +22,5 @@ const { Content } = await post.render();
   image={post.data.image}
 >
   <Content components={{ a: Link }} />
-  <Footer />
+  <Footer date={post.data.date} />
 </Layout>
