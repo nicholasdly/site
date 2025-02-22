@@ -13,60 +13,59 @@
     src: url("/fonts/geist-mono-variable.woff2") format("woff2");
     font-display: swap;
   }
-}
-
-@layer components {
-  article {
-    p {
-      @apply my-4 leading-relaxed;
+  body {
+    @apply text-pretty;
+  }
+  h1 {
+    @apply mb-6 pt-8 text-lg font-medium;
+  }
+  h2 {
+    @apply mb-3 mt-8 font-medium text-gray-800;
+  }
+  h3 {
+    @apply mb-3 mt-8 font-medium text-gray-800;
+  }
+  p {
+    @apply mb-6 text-gray-800;
+  }
+  strong {
+    @apply font-semibold;
+  }
+  ol {
+    @apply mb-6 list-decimal space-y-2 pl-5 text-gray-800;
+  }
+  ul {
+    @apply mb-6 list-disc space-y-1 pl-5 text-gray-800;
+  }
+  li {
+    @apply pl-1;
+  }
+  a {
+    @apply text-blue-500 hover:text-blue-700;
+  }
+  blockquote {
+    @apply mb-6 ml-[0.075em] border-l-2 border-gray-300 pl-4 text-gray-700;
+  }
+  img,
+  video {
+    @apply mb-6 rounded-lg border;
+  }
+  kbd {
+    @apply rounded border border-b-2 bg-gray-100 px-1 py-0.5 font-mono text-xs font-medium text-black;
+  }
+  :not(pre) > code {
+    @apply rounded border bg-gray-200/50 px-1 py-0.5 font-mono text-sm font-medium text-black;
+  }
+  pre:has(code) {
+    @apply my-6 max-h-[600px] overflow-auto rounded-lg border bg-gray-900/50 p-4 font-mono text-sm font-medium;
+  }
+  table {
+    @apply my-4 w-full table-auto border-collapse text-sm;
+    th {
+      @apply border-b p-4 text-left font-medium;
     }
-    h1 {
-      @apply my-4 text-xl font-medium;
-    }
-    h2 {
-      @apply my-4 text-lg font-medium;
-    }
-    h3,
-    h4,
-    h5,
-    h6 {
-      @apply my-4 font-medium;
-    }
-    :not(pre) > code {
-      @apply rounded border bg-neutral-200/50 px-1 py-0.5 font-mono text-sm font-medium text-black;
-    }
-    pre:has(code) {
-      @apply my-4 max-h-[600px] overflow-auto rounded-lg border bg-neutral-900/50 p-4 font-mono text-sm font-medium;
-    }
-    img {
-      @apply my-4 rounded-lg border;
-    }
-    video {
-      @apply my-4 rounded-lg border;
-    }
-    blockquote {
-      @apply my-4 border-l-2 pl-4;
-    }
-    a {
-      @apply text-blue-500 underline;
-    }
-    table {
-      @apply my-4 w-full table-auto border-collapse text-sm;
-      th {
-        @apply border-b p-4 text-left font-medium;
-      }
-      td {
-        @apply border-b bg-neutral-50 p-4;
-      }
-    }
-    ol {
-      @apply my-1 list-inside list-decimal space-y-1 [&_ol]:pl-5 [&_ul]:pl-5;
-    }
-    ul {
-      @apply my-1 list-inside list-disc space-y-1 [&_ol]:pl-5 [&_ul]:pl-5;
-    }
-    kbd {
-      @apply rounded border border-b-2 bg-neutral-100 px-1 py-0.5 font-mono text-xs font-medium text-black;
+    td {
+      @apply border-b bg-gray-50 p-4;
     }
   }
 }

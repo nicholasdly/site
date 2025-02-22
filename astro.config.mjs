@@ -12,12 +12,11 @@ export default defineConfig({
   site: SITE_URL,
   integrations: [mdx(), sitemap(), tailwind()],
   markdown: {
-    syntaxHighlight: "shiki",
     shikiConfig: {
-      themes: {
-        light: "vitesse-light",
-        dark: "vitesse-dark",
-      },
+      theme: "catppuccin-latte",
     },
+  },
+  prefetch: {
+    prefetchAll: true,
   },
 });

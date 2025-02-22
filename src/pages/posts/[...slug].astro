@@ -1,7 +1,8 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
+import Footer from "../../components/Footer.astro";
+import Link from "../../components/Link.astro";
 import Layout from "../../layouts/Layout.astro";
-import { formatDate } from "../../lib/utils";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -10,7 +11,6 @@ export async function getStaticPaths() {
     props: post,
   }));
 }
-type Props = CollectionEntry<"posts">;
 
 const post = Astro.props;
 const { Content } = await post.render();
@@ -21,13 +21,6 @@ const { Content } = await post.render();
   description={post.data.description}
   image={post.data.image}
 >
-  <main class="mx-auto my-12 flex max-w-lg flex-col justify-center p-4">
-    <h1 class="mb-5 text-xl font-medium">{post.data.title}</h1>
-    <p class="mb-1 font-medium text-neutral-500">
-      {formatDate(post.data.date)}
-    </p>
-    <article>
-      <Content />
-    </article>
-  </main>
+  <Content components={{ a: Link }} />
+  <Footer date={post.data.date} />
 </Layout>

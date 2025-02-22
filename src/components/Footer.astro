@@ -1,0 +1,20 @@
+---
+interface Props {
+  date: Date;
+}
+
+const { date } = Astro.props;
+
+function formatDate(date: Date) {
+  return Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(date);
+}
+---
+
+<footer class="mt-8 flex items-center justify-between">
+  <span class="text-lg text-gray-500">— Nicholas Ly</span>
+  <span class="text-lg text-gray-500">{formatDate(date)}</span>
+</footer>

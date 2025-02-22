@@ -3,14 +3,18 @@ import Header from "../components/Header.astro";
 import "../styles/global.css";
 
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   image?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/blog-placeholder.svg" } = Astro.props;
+const {
+  title = "Nicholas Ly",
+  description = "Software engineer, writer, and open-source enthusiast.",
+  image = "/static/og.svg",
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -21,7 +25,7 @@ const { title, description, image = "/blog-placeholder.svg" } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Font preloads -->
+    <!-- Fonts -->
     <link
       rel="preload"
       href="/fonts/geist-variable.woff2"
@@ -59,8 +63,12 @@ const { title, description, image = "/blog-placeholder.svg" } = Astro.props;
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.url)} />
   </head>
-  <body class="font-sans text-neutral-900 antialiased">
-    <Header />
-    <slot />
+  <body class="bg-white font-sans text-gray-900">
+    <div class="mx-auto flex w-full max-w-xl flex-col p-6 md:pt-8">
+      <Header />
+      <main>
+        <slot />
+      </main>
+    </div>
   </body>
 </html>
