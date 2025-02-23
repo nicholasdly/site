@@ -28,14 +28,14 @@ const {
     <!-- Fonts -->
     <link
       rel="preload"
-      href="/fonts/geist-variable.woff2"
+      href="/fonts/geist-sans.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href="/fonts/geist-mono-variable.woff2"
+      href="/fonts/geist-mono.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -63,8 +63,8 @@ const {
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.url)} />
   </head>
-  <body class="font-sans text-gray-900">
-    <div class="mx-auto w-full max-w-prose px-6 pb-24 pt-8">
+  <body>
+    <div class="mx-auto w-full max-w-prose px-6 pt-8 pb-24">
       <Header />
       <main>
         <slot />

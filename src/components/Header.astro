@@ -22,7 +22,7 @@ const links: { name: string; href: string }[] = [
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
             fill="currentColor"
-            class="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            class="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
           >
             <path
               fill-rule="evenodd"
@@ -37,6 +37,8 @@ const links: { name: string; href: string }[] = [
 </header>
 
 <style>
+  @reference "../styles/global.css";
+
   a {
     @apply text-gray-500 hover:text-gray-800;
   }
