@@ -1,8 +1,4 @@
 {
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "supermaven.enable": {
-    "markdown": false,
-    "mdx": false
-  }
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
