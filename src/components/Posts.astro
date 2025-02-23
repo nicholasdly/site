@@ -1,13 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-
-function formatDate(date: Date) {
-  return Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(date);
-}
+import { formatDate } from "../lib/utils";
 
 const collection = await getCollection("posts");
 const posts = collection.sort(
@@ -20,7 +13,7 @@ const posts = collection.sort(
     posts.map((post) => (
       <li>
         <a href={`/posts/${post.slug}`}>{post.data.title}</a>
-        <span> — {post.data.description}</span>
+        <span> — {formatDate(post.data.date)}</span>
       </li>
     ))
   }
