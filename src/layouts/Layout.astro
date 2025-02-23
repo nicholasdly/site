@@ -11,9 +11,9 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const {
-  title = "Nicholas Ly",
-  description = "Software engineer, writer, and open-source enthusiast.",
-  image = "/static/og.svg",
+  title = "Nicholas Ly, Engineer",
+  description = "The website and portfolio of Nicholas Ly.",
+  image = "/static/og.png",
 } = Astro.props;
 ---
 
@@ -63,8 +63,8 @@ const {
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.url)} />
   </head>
-  <body class="bg-white font-sans text-gray-900">
-    <div class="mx-auto flex w-full max-w-xl flex-col p-6 md:pt-8">
+  <body class="font-sans text-gray-900">
+    <div class="mx-auto w-full max-w-prose px-6 pb-24 pt-8">
       <Header />
       <main>
         <slot />

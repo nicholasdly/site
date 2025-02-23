@@ -1,21 +1,21 @@
 ---
 const links: { name: string; href: string }[] = [
-  { name: "linkedin", href: "https://www.linkedin.com/in/nicholasdly/" },
-  { name: "github", href: "https://github.com/nicholasdly" },
-  { name: "twitter", href: "https://x.com/nichdly" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/nicholasdly/" },
+  { name: "Github", href: "https://github.com/nicholasdly" },
+  { name: "Twitter", href: "https://x.com/nichdly" },
 ];
 ---
 
 <header>
   <nav class="flex gap-5">
-    <a href="/">home</a>
+    <a href="/">Home</a>
     {
       links.map((link) => (
         <a
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          class="group flex items-center"
+          class="group inline-flex items-center"
         >
           <span>{link.name}</span>
           <svg
