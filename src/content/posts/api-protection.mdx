@@ -6,112 +6,36 @@ date: "Nov 16 2024"
 
 # {frontmatter.title}
 
-I'd like to think it's a right of passage for any new web developer to build an <abbr title="Application Programming Interface">API</abbr>. After all, the very first thing I worked on when I started as a web developer was an API, and I've learned a lot since then.
+Building an <abbr title="Application Programming Interface">API</abbr> is easy—there's an abundance of languages and frameworks that let you spin one up quickly. However, making a **great** API takes a bit more effort.
 
-APIs are the backbone of basically every web, mobile, and native application ever made. They're misconceivingly simple to build—especially with modern web frameworks—but it's incredibly important to protect them at any scale.
-
-Three ways I expect every API to be protected is through authorization, input validation, and rate limiting. Let's dive into each.
-
-## Authorization
-
-The very first thing you should be enforcing in your endpoint is authorization. It makes no sense to proceed with any processing or logic if the user is not authorized to communicate with the endpoint in the first place.
-
-There's a variety of ways to implement authorization, such as a bearer token, API key, or encrypting session data into the user's cookies.
-
-```ts
-export async function POST(request: NextRequest) {
-  const authorized = authorize(request);
-  if (!authorized) {
-    return new NextResponse(null, { status: 401 });
-  }
-
-  // ...
-}
-```
-
-With that said, authorization techniques haven't changed in a long time. I highly recommend learning how they work, but if you don't feel like reinventing the wheel, there are a ton of libraries and services that handle this all for you.
-
-There are many open-source libraries that handle all of the logic for you, or atleast abstract it to make it easier, such as [Auth.js](https://authjs.dev/), [Lucia](https://lucia-auth.com/), and [Better Auth](https://www.better-auth.com/).
-
-There are also many paid services that manage both the logic and data for you at a premium, such as [Clerk](https://clerk.com/), [Kinde](https://kinde.com/), and [WorkOS](https://workos.com/). These give the added benefit of saving you a lot of time and hassle, but you won't technically own the data, and you will be depending on the performance and configuration of their services.
-
-Naturally, many of us don't want to pay money for something we can build ourselves, but I recommend you consider the paid alternatives. Unlike money, you aren't able to get your time and energy back!
-
-## Input Validation
-
-You _never_ want to assume how the user will behave, and you must always be prepared for malice. An API that doesn't validate or sanitize its inputs might as well be an open door for abuse.
-
-This can be done with your own logic, but libraries like [Zod](https://zod.dev/) make this a breeze.
-
-```ts
-export async function POST(request: NextRequest) {
-  // ...
-
-  const body = await request.json();
-
-  // Validates the request body with the following rules:
-  //   - body is an object containing a "content" key
-  //   - "content" is a whitespace trimmed string
-  //   - "content" has a minimum length of 1
-  //   - "content" has a maximum length of 200
-  const { data, success } = await z
-    .object({
-      content: z.string().trim().min(1).max(200),
-    })
-    .safeParseAsync(body);
-
-  if (!success) {
-    return new NextResponse(null, { status: 400 });
-  }
-
-  // ...
-}
-```
-
-Best case scenario, input that isn't validated may cause an unhandled error—a headache both for the user and the developer, since neither of you won't know exactly why things broke.
-
-Worst case scenario, input that isn't validated may lead to unexpected requests to your database or services. This could slow down your server, add a crazy amount to your bill, or manipulate data (ex. [SQL injection](https://owasp.org/www-community/attacks/SQL_Injection)).
-
-You could prevent all of this from happening with a bit of logic that checks to make sure the input is that of an expected type and format.
+Protection is one important aspect of what makes an API great. Let's take a look at three essential ways to protect your API.
 
 ## Rate Limiting
 
-While some of the problems that arise with a lack of input validation can be minor, a lack of rate limiting is a much more significant issue.
+The first thing I enforce in my API endpoints is rate limiting. If someone is spamming your API, you want to minimize the compute resources they consume on your servers.
 
-Without rate limiting, something as easy as spam can cause your server to slow down and a crazy large bill. Even if you might be preventing spam on the frontend of your application, it doesn't take any skill to write a script that sends a massive amount of requests to your server.
+There's nothing wrong with doing authorization and input validation first, but it means spammers are getting more processing time or even a free database connection (if you're using sessions).
 
-Rate limiting is quite a bit more complex to do from scratch though, involving a variety of algorithms and database interactions, so many open-source libraries exist to make enforcing rate limits as easy as possible. A rate limiting library might even be native to your web framework!
+You don't need anything fancy to implement rate limiting efficiently. If your API runs on a persistent server, you can manage it using in-memory storage. If your API is serverless, you'll need a persistent store like Redis.
 
-Personally, I currently write most of my APIs in TypeScript and have enjoyed using [Upstash](https://upstash.com/) and their managed Redis database along with their open-source `@upstash/ratelimit` library for handling basically all of the logic.
+## Input Validation
 
-```ts
-/**
- * A rate limiter powered by Upstash Redis, which
- * uses a sliding window algorithm preventing more
- * than 50 requests in a 24 hour period.
- */
-const ratelimit = new Ratelimit({
-  redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(50, "24 h"),
-});
+If your endpoint accepts user input—such as path parameters, query parameters, a JSON body, or form data—you need to validate it.
 
-export async function POST(request: NextRequest) {
-  // ...
+This should be self-explanatory. Lack of input validation can lead to unhandled errors or, worse, unexpected behavior.
 
-  const ip = request.headers.get("x-forwarded-for");
-  const { success } = await ratelimit.limit(ip ?? "anon");
-  if (!success) {
-    return new NextResponse(null, { status: 429 });
-  }
+This can be as simple as a few `if` statements, but I prefer using validation libraries like [Zod](https://zod.dev/).
 
-  // ...
-}
-```
+## Authorization
 
-Again, I highly recommend doing your own research so you understand how rate limiting works under the hood. Similar to authorization, feel free to build your own or use a paid service like Upstash.
+After rate limiting and input validation, I enforce authorization. Naturally, you can skip this step if you intend the endpoint to be publicly accessible.
+
+I prefer to handle authorization last, especially when using database sessions. This way, unauthorized requests never take up a database connection or get a free read (and therefore compute resources).
+
+This becomes even more important when using a third-party authentication provider, as they may have their own rate limits.
 
 ## Conclusion
 
-That concludes the three primary ways of protecting your database that doesn't directly involve your own written logic. By implementing all three of these features, you're already doing better than the majority of APIs, and you'll be doing yourself a favor!
+These are the three essential protections every API should have. Without them, you're leaving room for abuse and unnecessary headaches.
 
-As a bonus tip: avoid unnecessary, synchronous logic! This is extremely common with developers who aren't very experienced with SQL databases. If you have consecutive blocking SQL calls that don't depend on each other, there's a high probability you can fetch _all_ your data in a single SQL query!
+P.S. Don't forget to leverage asynchronous operations where possible! You'd be surprised how many tasks can run concurrently.
