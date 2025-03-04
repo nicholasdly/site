@@ -6,36 +6,36 @@ date: "Nov 16 2024"
 
 # {frontmatter.title}
 
-Building an <abbr title="Application Programming Interface">API</abbr> is easy—there's an abundance of languages and frameworks that allow you make an API very quickly. However, making a **good** API takes a bit more effort.
+Building an <abbr title="Application Programming Interface">API</abbr> is easy—there's an abundance of languages and frameworks that let you spin one up quickly. However, making a **great** API takes a bit more effort.
 
-Let's take a look at three ways you should be protecting your API.
+Protection is one important aspect of what makes an API great. Let's take a look at three essential ways to protect your API.
 
 ## Rate Limiting
 
-The very first thing I like to enforce in my API endpoint is rate limiting. If someone is spamming your API, you want to make sure they take up as little compute on your servers as possible.
+The first thing I enforce in my API endpoints is rate limiting. If someone is spamming your API, you want to minimize the compute resources they consume on your servers.
 
-There's nothing wrong with doing authorization and input validation first, but it means spammers are getting with more time on your servers or even a free connection on your database (if you're using sessions).
+There's nothing wrong with doing authorization and input validation first, but it means spammers are getting more processing time or even a free database connection (if you're using sessions).
 
-You really don't need anything fancy to implement rate limiting that scales really well. If your API is constantly running on a server, you can just implement it using server memory. If your API is serverless, that won't be possible, so you can use something like Redis.
+You don't need anything fancy to implement rate limiting efficiently. If your API runs on a persistent server, you can manage it using in-memory storage. If your API is serverless, you'll need a persistent store like Redis.
 
 ## Input Validation
 
-If your endpoint takes in input from the user, whether thats through a path parameter, query parameter, JSON body, or form data, you're going to want to validate that next.
+If your endpoint accepts user input—such as path parameters, query parameters, a JSON body, or form data—you need to validate it.
 
-I think this is very self-explanatory. Lack of input validation can lead to unhandled errors, or even worse, unexpected behavior.
+This should be self-explanatory. Lack of input validation can lead to unhandled errors or, worse, unexpected behavior.
 
-This can literally be a bunch of `if` statements, but I prefer validation libraries like [Zod](https://zod.dev/).
+This can be as simple as a few `if` statements, but I prefer using validation libraries like [Zod](https://zod.dev/).
 
 ## Authorization
 
-After rate limiting and input validation, I like to finally implement authorization. Naturally, you can skip this if you want your endpoint to be publicly accessible.
+After rate limiting and input validation, I enforce authorization. Naturally, you can skip this step if you intend the endpoint to be publicly accessible.
 
-I like to authorization last, especially when users are authenticated via database sessions, since it means the request will never take up a database connection or get a free read (and therefore compute) unless the request is safe.
+I prefer to handle authorization last, especially when using database sessions. This way, unauthorized requests never take up a database connection or get a free read (and therefore compute resources).
 
-This is even more important if you're using a third-party auth. provider, since they may have their own rate limits in place.
+This becomes even more important when using a third-party authentication provider, as they may have their own rate limits.
 
 ## Conclusion
 
-Those are the three ways I expect all APIs to be protected. Without any of these in place, you're leaving a lot of room for abuse and headache.
+These are the three essential protections every API should have. Without them, you're leaving room for abuse and unnecessary headaches.
 
-P.S. Don't forget to leverage asynchronous operations where possible! You'd be surprised just how many operations you can run simultaneously.
+P.S. Don't forget to leverage asynchronous operations where possible! You'd be surprised how many tasks can run concurrently.
