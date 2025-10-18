@@ -1,26 +1,20 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+
 import mdx from "@astrojs/mdx";
-
 import sitemap from "@astrojs/sitemap";
-
-import { SITE_URL } from "./src/consts";
-
 import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE_URL,
+  site: "https://example.com",
   integrations: [mdx(), sitemap()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   markdown: {
     shikiConfig: {
       theme: "catppuccin-latte",
     },
-  },
-  prefetch: {
-    prefetchAll: true,
-  },
-  vite: {
-    plugins: [tailwindcss()],
   },
 });

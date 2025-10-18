@@ -1,19 +1,17 @@
 ---
-import Header from "../components/Header.astro";
-import "../styles/global.css";
+import Header from "@/components/Header.astro";
+import "@/styles/global.css";
 
 interface Props {
   title?: string;
   description?: string;
-  image?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const {
   title = "Nicholas Ly",
-  description = "The website and portfolio of Nicholas Ly.",
-  image = "/static/og.png",
+  description = "Hi, I'm Nicholas Ly. I'm a software engineer.",
 } = Astro.props;
 ---
 
@@ -26,7 +24,7 @@ const {
     <meta name="generator" content={Astro.generator} />
 
     <!-- Fonts -->
-    <link
+    <!-- <link
       rel="preload"
       href="/fonts/geist-sans.woff2"
       as="font"
@@ -39,7 +37,7 @@ const {
       as="font"
       type="font/woff2"
       crossorigin
-    />
+    /> -->
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
@@ -54,17 +52,17 @@ const {
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <!-- <meta property="og:image" content={new URL(image, Astro.url)} /> -->
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+    <!-- <meta property="twitter:image" content={new URL(image, Astro.url)} /> -->
   </head>
   <body>
-    <div class="mx-auto w-full max-w-prose px-6 pt-8 pb-24">
+    <div class="mx-auto w-full max-w-prose p-6 sm:p-12">
       <Header />
       <main>
         <slot />
