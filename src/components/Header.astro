@@ -1,45 +1,9 @@
----
-const links: { name: string; href: string }[] = [
-  { name: "Github", href: "https://github.com/nicholasdly" },
-  { name: "Twitter", href: "https://x.com/nichdly" },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/nicholasdly/" },
-];
----
-
-<header>
-  <nav class="flex gap-5">
-    <a href="/">Home</a>
-    {
-      links.map((link) => (
-        <a
-          href={link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group inline-flex items-center"
-        >
-          <span>{link.name}</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            class="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4.22 11.78a.75.75 0 0 1 0-1.06L9.44 5.5H5.75a.75.75 0 0 1 0-1.5h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V6.56l-5.22 5.22a.75.75 0 0 1-1.06 0Z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </a>
-      ))
-    }
+<header class="flex justify-between">
+  <nav class="flex gap-6">
+    <a href="/">home</a>
+    <a href="/blog">blog</a>
   </nav>
+  <div>
+    <a class="text-neutral-400" href="https://x.com/nichdly">@nichdly</a>
+  </div>
 </header>
-
-<style>
-  @reference "../styles/global.css";
-
-  a {
-    @apply text-gray-500 hover:text-gray-800;
-  }
-</style>

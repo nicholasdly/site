@@ -1,75 +1,53 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Geist";
-  src: url("/fonts/geist-sans.woff2") format("woff2");
-  font-display: swap;
-}
-@font-face {
-  font-family: "Geist Mono";
-  src: url("/fonts/geist-mono.woff2") format("woff2");
-  font-display: swap;
-}
-
-@theme {
-  --font-sans: "Geist", sans-serif;
-  --font-mono: "Geist Mono", monospace;
-}
-
 @layer base {
   body {
-    @apply bg-white font-sans text-pretty text-gray-800;
+    @apply bg-white font-sans text-lg text-neutral-500;
   }
   h1 {
-    @apply mb-6 pt-8 text-lg font-medium;
+    @apply my-6 text-4xl font-semibold tracking-tight text-black;
   }
   h2 {
-    @apply mt-8 mb-3 font-medium;
+    @apply mt-4 text-3xl font-semibold tracking-tight text-black;
   }
   h3 {
-    @apply mt-8 mb-3 font-medium;
+    @apply mt-4 text-2xl font-semibold tracking-tight text-black;
   }
   p {
-    @apply mb-6;
-  }
-  strong {
-    @apply font-medium;
-  }
-  ol {
-    @apply mb-6 list-decimal space-y-2 pl-5;
+    @apply mt-4 leading-snug;
   }
   ul {
-    @apply mb-6 list-disc space-y-1 pl-5;
+    @apply mt-4 list-inside list-disc;
   }
-  li {
-    @apply pl-1;
-  }
-  a {
-    @apply text-blue-500 hover:text-blue-700;
+  ol {
+    @apply mt-4 list-inside list-decimal;
   }
   blockquote {
-    @apply mb-6 border-l-2 border-gray-300 pl-4 text-gray-500;
+    @apply mt-4 border-l-2 border-neutral-300 pl-4;
   }
   img,
   video {
-    @apply mb-6 rounded-lg border;
+    @apply mt-4 rounded-lg border border-neutral-200;
   }
-  kbd {
-    @apply rounded border border-b-2 border-gray-300 bg-gray-100 px-1 py-0.5 font-mono text-xs font-medium text-black;
+  strong {
+    @apply font-semibold;
+  }
+  em {
+    @apply italic;
+  }
+  a {
+    @apply text-blue-500 underline-offset-2 hover:text-blue-700 hover:underline;
   }
   :not(pre) > code {
-    @apply rounded border border-gray-300 bg-gray-200/50 px-1 py-0.5 font-mono text-sm font-medium text-black;
+    @apply rounded border border-neutral-300 bg-neutral-200/50 px-1 py-0.5 font-mono text-sm font-medium text-neutral-700;
   }
   pre:has(code) {
-    @apply my-6 overflow-auto rounded-lg border border-gray-300 p-4 font-mono text-sm font-medium;
+    @apply my-6 overflow-auto rounded-lg border border-neutral-300 p-4 font-mono text-sm font-medium;
   }
-  table {
-    @apply my-4 w-full table-auto border-collapse text-sm;
-    th {
-      @apply border-b p-4 text-left font-medium;
-    }
-    td {
-      @apply border-b bg-gray-50 p-4;
-    }
+  kbd {
+    @apply rounded-md border border-b-2 border-neutral-200 bg-neutral-100 px-1 py-0.5 font-mono text-xs text-neutral-700;
+  }
+  mark {
+    @apply bg-yellow-200;
   }
 }
