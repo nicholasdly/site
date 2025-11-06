@@ -5,13 +5,13 @@
     @apply bg-white font-sans text-lg text-neutral-500;
   }
   h1 {
-    @apply my-6 text-4xl font-semibold tracking-tight text-black;
+    @apply mt-8 mb-6 text-4xl font-semibold tracking-tight text-black;
   }
   h2 {
-    @apply mt-4 text-3xl font-semibold tracking-tight text-black;
+    @apply mt-8 text-3xl font-semibold tracking-tight text-black;
   }
   h3 {
-    @apply mt-4 text-2xl font-semibold tracking-tight text-black;
+    @apply mt-8 text-2xl font-semibold tracking-tight text-black;
   }
   p {
     @apply mt-4 leading-snug;
