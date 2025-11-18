@@ -5,6 +5,7 @@ type Frontmatter = {
   title: string;
   summary: string;
   publishedAt: string;
+  pinned?: string;
 };
 
 function parseFrontmatter(fileContent: string) {

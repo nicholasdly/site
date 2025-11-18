@@ -1,10 +1,11 @@
-import { NoteListContent } from "@/components/note-list-content";
-import { getNotes } from "@/lib/content";
 import { Metadata } from "next";
+
+import { NoteSidebarContent } from "@/components/note-sidebar-content";
+import { getNotes } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "nicholas ly | notes",
-  description: "notes for you to read.",
+  description: "read all about it!",
 };
 
 export default function Page() {
@@ -17,8 +18,8 @@ export default function Page() {
   });
 
   return (
-    <main className="p-3 md:hidden">
-      <NoteListContent notes={notes} />
+    <main className="md:hidden">
+      <NoteSidebarContent notes={notes} />
     </main>
   );
 }

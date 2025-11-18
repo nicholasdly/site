@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { Pin } from "lucide-react";
 
+import { useSearch } from "@/hooks/use-search";
 import type { getNotes } from "@/lib/content";
 
 import { NoteSidebarLink } from "./note-sidebar-link";
-import { Search } from "./search";
+import { SearchInput } from "./search-input";
 import {
   SidebarContent,
   SidebarGroup,
@@ -18,19 +19,45 @@ export function NoteSidebarContent({
 }: {
   notes: ReturnType<typeof getNotes>;
 }) {
-  const [filteredNotes, setFilteredNotes] = useState(notes);
+  const pinnedNotes = notes.filter((note) => note.frontmatter.pinned);
+  const unpinnedNotes = notes.filter((note) => !note.frontmatter.pinned);
+
+  const { query, results: filteredNotes, search } = useSearch(notes);
 
   return (
-    <SidebarContent>
+    <SidebarContent className="gap-0">
       <SidebarGroup>
-        <SidebarGroupLabel className="sr-only">Notes</SidebarGroupLabel>
-        <Search notes={notes} setFilteredNotes={setFilteredNotes} />
-        <SidebarGroupContent>
-          {filteredNotes.map((note) => (
-            <NoteSidebarLink key={note.slug} {...note} />
-          ))}
-        </SidebarGroupContent>
+        <SearchInput query={query} search={search} />
       </SidebarGroup>
+      {query.length === 0 ? (
+        <>
+          <SidebarGroup>
+            <SidebarGroupLabel className="text-sm font-semibold">
+              <Pin className="mr-1" />
+              Pinned
+            </SidebarGroupLabel>
+            {pinnedNotes.map((note) => (
+              <NoteSidebarLink key={note.slug} {...note} />
+            ))}
+          </SidebarGroup>
+          <SidebarGroup>
+            <SidebarGroupLabel className="text-sm font-semibold">
+              Notes
+            </SidebarGroupLabel>
+            {unpinnedNotes.map((note) => (
+              <NoteSidebarLink key={note.slug} {...note} />
+            ))}
+          </SidebarGroup>
+        </>
+      ) : (
+        <SidebarGroup>
+          <SidebarGroupContent>
+            {filteredNotes.map((note) => (
+              <NoteSidebarLink key={note.slug} {...note} />
+            ))}
+          </SidebarGroupContent>
+        </SidebarGroup>
+      )}
     </SidebarContent>
   );
 }

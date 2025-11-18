@@ -1,5 +1,4 @@
 import { format } from "date-fns";
-import { tz } from "@date-fns/tz";
 import {
   ALargeSmall,
   ChevronLeft,
@@ -11,6 +10,7 @@ import {
 import Link from "next/link";
 
 import type { getNotes } from "@/lib/content";
+import { tz } from "@date-fns/tz";
 
 import { CustomMDX } from "./mdx";
 import { Button } from "./ui/button";
@@ -88,7 +88,9 @@ export function Editor({
     <div className="flex w-full flex-col">
       <ControlBar />
       <div className="text-muted-foreground text-center text-sm">
-        {format(note.frontmatter.publishedAt, "PPPp", { in: tz("America/Chicago") })}
+        {format(note.frontmatter.publishedAt, "PPPp", {
+          in: tz("America/Chicago"),
+        })}
       </div>
       <article className="mb-12 p-6 md:px-10 md:py-4">
         <CustomMDX source={note.content} />
