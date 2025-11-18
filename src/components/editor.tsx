@@ -1,19 +1,36 @@
-import { ALargeSmall, ListTodo, SquarePen, Table, Trash2 } from "lucide-react";
+import {
+  ALargeSmall,
+  ChevronLeft,
+  ListTodo,
+  SquarePen,
+  Table,
+  Trash2,
+} from "lucide-react";
+import Link from "next/link";
 
 import { CustomMDX } from "./mdx";
-import { NoteSidebarToggle } from "./note-sidebar-toggle";
 import { Button } from "./ui/button";
 
 function ControlBar() {
   return (
     <div className="flex items-center justify-between p-3 select-none">
       <div className="space-x-1">
-        <NoteSidebarToggle />
         <Button
           size="icon-sm"
           variant="ghost"
-          className="hover:cursor-not-allowed"
+          className="md:hidden"
+          aria-label="Return to notes list"
+          asChild
+        >
+          <Link href={"/notes"}>
+            <ChevronLeft className="text-primary size-5" />
+          </Link>
+        </Button>
+        <Button
+          size="icon-sm"
+          variant="ghost"
           aria-label="Delete this note"
+          disabled
         >
           <Trash2 className="text-primary size-5" />
         </Button>
@@ -22,24 +39,24 @@ function ControlBar() {
         <Button
           size="icon-sm"
           variant="ghost"
-          className="hover:cursor-not-allowed"
           aria-label="Choose a style to apply to text"
+          disabled
         >
           <ALargeSmall className="text-primary size-5" />
         </Button>
         <Button
           size="icon-sm"
           variant="ghost"
-          className="hover:cursor-not-allowed"
           aria-label="Make a checklist"
+          disabled
         >
           <ListTodo className="text-primary size-5" />
         </Button>
         <Button
           size="icon-sm"
           variant="ghost"
-          className="hover:cursor-not-allowed"
           aria-label="Insert a table"
+          disabled
         >
           <Table className="text-primary size-5" />
         </Button>
@@ -48,8 +65,8 @@ function ControlBar() {
         <Button
           size="icon-sm"
           variant="ghost"
-          className="hover:cursor-not-allowed"
           aria-label="Create a new note"
+          disabled
         >
           <SquarePen className="text-primary size-5" />
         </Button>
@@ -62,7 +79,7 @@ export function Editor({ content }: { content: string }) {
   return (
     <div className="flex w-full flex-col">
       <ControlBar />
-      <article className="mb-12 px-10 py-4">
+      <article className="mb-12 p-6 md:px-10 md:py-4">
         <CustomMDX source={content} />
       </article>
     </div>

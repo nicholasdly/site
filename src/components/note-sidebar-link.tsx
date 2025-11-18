@@ -4,17 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import type { getNotes } from "@/lib/content";
-import { cn } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 
 import { SidebarMenuButton, SidebarMenuItem } from "./ui/sidebar";
-
-function formatDate(date: Date) {
-  return Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-  }).format(date);
-}
 
 export function NoteSidebarLink({
   slug,
