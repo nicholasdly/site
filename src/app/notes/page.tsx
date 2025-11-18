@@ -30,7 +30,7 @@ export default function Page() {
                 {frontmatter.title}
               </p>
               <p className="text-muted-foreground line-clamp-1 text-lg text-ellipsis md:text-sm">
-                <span className="text-foreground mr-2">{formattedDate}</span>
+                <span className="text-foreground mr-1.5">{formattedDate}</span>
                 {frontmatter.summary}
               </p>
             </Link>

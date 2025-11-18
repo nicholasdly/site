@@ -29,5 +29,5 @@ export default async function Page({ params }: Params) {
   const note = getNotes().find((note) => note.slug === slug);
   if (!note) notFound();
 
-  return <Editor content={note.content} />;
+  return <Editor note={note} />;
 }
