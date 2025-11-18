@@ -1,10 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 import "./globals.css";
 
 import { NoteSidebar } from "@/components/note-sidebar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SidebarProvider } from "@/components/ui/sidebar";
+
+export const viewport: Viewport = {
+  maximumScale: 1, // Disable auto-zoom on mobile Safari
+};
 
 export const metadata: Metadata = {
   title: "nicholas ly",
