@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { tz } from "@date-fns/tz";
 import {
   ALargeSmall,
   ChevronLeft,
@@ -87,7 +88,7 @@ export function Editor({
     <div className="flex w-full flex-col">
       <ControlBar />
       <div className="text-muted-foreground text-center text-sm">
-        {format(note.frontmatter.publishedAt, "PPPp")}
+        {format(note.frontmatter.publishedAt, "PPPp", { in: tz("America/Chicago") })}
       </div>
       <article className="mb-12 p-6 md:px-10 md:py-4">
         <CustomMDX source={note.content} />
