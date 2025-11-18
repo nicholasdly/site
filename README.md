@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# site
 
-## Getting Started
+> my personal website and blog, inspired by [alana goyal's website](https://www.alanagoyal.com/) based off of apple notes.
 
-First, run the development server:
+## how it works
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+this web app does not have a traditional backend, and is entirely a frontend project utilizing server-side rendering (ssr).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+each note is a markdown file that is loaded on the server and parsed into html on the browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+this app is built with:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- next.js 16 with app router for ssr, static generation, and markdown parsing
+- typescript for typesafety
+- shadcn/ui as a local component library
+- tailwind css for styling
 
-## Learn More
+## local setup
 
-To learn more about Next.js, take a look at the following resources:
+there aren't many prerequisites other than **npm**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. download, fork, or template this repository
+2. download dependencies via `npm i`
+3. start a local development server via `npm run dev`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+before making a contribution, be sure to run the following scripts:
 
-## Deploy on Vercel
+1. run a typecheck via `npm run typecheck`
+2. run eslint via `npm run lint`
+3. run prettier via `npm run format`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## license
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+licensed under the [mit license](LICENSE).
