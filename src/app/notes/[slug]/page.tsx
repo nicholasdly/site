@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Params) {
   if (!note) return;
 
   return {
-    title: note.frontmatter.title,
+    title: `nicholas ly | ${note.frontmatter.title}`,
     description: note.frontmatter.summary,
   };
 }
