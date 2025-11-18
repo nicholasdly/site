@@ -1,13 +1,7 @@
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-} from "@/components/ui/sidebar";
+import { Sidebar } from "@/components/ui/sidebar";
 import { getNotes } from "@/lib/content";
 
-import { NoteSidebarLink } from "./note-sidebar-link";
+import { NoteSidebarContent } from "./note-sidebar-content";
 
 export function NoteSidebar() {
   const notes = getNotes();
@@ -20,16 +14,7 @@ export function NoteSidebar() {
 
   return (
     <Sidebar>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel className="sr-only">Notes</SidebarGroupLabel>
-          <SidebarGroupContent>
-            {notes.map((note) => (
-              <NoteSidebarLink key={note.slug} {...note} />
-            ))}
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
+      <NoteSidebarContent notes={notes} />
     </Sidebar>
   );
 }
