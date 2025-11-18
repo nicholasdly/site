@@ -12,8 +12,8 @@ function ControlBar() {
         <Button
           size="icon-sm"
           variant="ghost"
-          className="hover:cursor-not-allowed"
           aria-label="Delete this note"
+          disabled
         >
           <Trash2 className="text-primary size-5" />
         </Button>
@@ -22,24 +22,24 @@ function ControlBar() {
         <Button
           size="icon-sm"
           variant="ghost"
-          className="hover:cursor-not-allowed"
           aria-label="Choose a style to apply to text"
+          disabled
         >
           <ALargeSmall className="text-primary size-5" />
         </Button>
         <Button
           size="icon-sm"
           variant="ghost"
-          className="hover:cursor-not-allowed"
           aria-label="Make a checklist"
+          disabled
         >
           <ListTodo className="text-primary size-5" />
         </Button>
         <Button
           size="icon-sm"
           variant="ghost"
-          className="hover:cursor-not-allowed"
           aria-label="Insert a table"
+          disabled
         >
           <Table className="text-primary size-5" />
         </Button>
@@ -48,8 +48,8 @@ function ControlBar() {
         <Button
           size="icon-sm"
           variant="ghost"
-          className="hover:cursor-not-allowed"
           aria-label="Create a new note"
+          disabled
         >
           <SquarePen className="text-primary size-5" />
         </Button>
@@ -62,7 +62,7 @@ export function Editor({ content }: { content: string }) {
   return (
     <div className="flex w-full flex-col">
       <ControlBar />
-      <article className="mb-12 px-10 py-4">
+      <article className="mb-12 p-6 md:px-10 md:py-4">
         <CustomMDX source={content} />
       </article>
     </div>

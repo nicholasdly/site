@@ -124,14 +124,15 @@
 
 @layer components {
   article {
+    @apply text-lg md:text-base;
     h1 {
-      @apply text-2xl font-bold;
+      @apply mb-4 text-3xl font-bold md:text-2xl;
     }
     h2 {
-      @apply mt-8 text-xl font-bold;
+      @apply mt-8 text-2xl font-bold md:text-xl;
     }
     h3 {
-      @apply mt-4 text-lg font-bold;
+      @apply mt-4 text-xl font-bold md:text-lg;
     }
     p {
       @apply mt-2;
