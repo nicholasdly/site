@@ -1,14 +1,31 @@
-import { ALargeSmall, ListTodo, SquarePen, Table, Trash2 } from "lucide-react";
+import {
+  ALargeSmall,
+  ChevronLeft,
+  ListTodo,
+  SquarePen,
+  Table,
+  Trash2,
+} from "lucide-react";
+import Link from "next/link";
 
 import { CustomMDX } from "./mdx";
-import { NoteSidebarToggle } from "./note-sidebar-toggle";
 import { Button } from "./ui/button";
 
 function ControlBar() {
   return (
     <div className="flex items-center justify-between p-3 select-none">
       <div className="space-x-1">
-        <NoteSidebarToggle />
+        <Button
+          size="icon-sm"
+          variant="ghost"
+          className="md:hidden"
+          aria-label="Return to notes list"
+          asChild
+        >
+          <Link href={"/notes"}>
+            <ChevronLeft className="text-primary size-5" />
+          </Link>
+        </Button>
         <Button
           size="icon-sm"
           variant="ghost"

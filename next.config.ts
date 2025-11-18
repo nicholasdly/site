@@ -11,11 +11,6 @@ const nextConfig: NextConfig = {
       permanent: false,
     },
     {
-      source: "/notes",
-      destination: "/notes/about-me",
-      permanent: false,
-    },
-    {
       source:
         "/:path((?!notes|api|messages|_next|static|public|favicon\\.ico|sitemap\\.xml|robots\\.txt).*)",
       destination: "/notes/:path",
