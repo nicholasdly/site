@@ -18,6 +18,9 @@ const nextConfig: NextConfig = {
     },
   ],
   reactCompiler: true,
+  typescript: {
+    ignoreBuildErrors: true, // Reduces build times since we use GitHub actions for this
+  },
 };
 
 const withMDX = createMDX({
