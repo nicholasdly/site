@@ -1,17 +1,11 @@
 import { format } from "date-fns";
-import {
-  ALargeSmall,
-  ChevronLeft,
-  ListTodo,
-  SquarePen,
-  Table,
-  Trash2,
-} from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 
 import type { getNotes } from "@/lib/content";
 import { tz } from "@date-fns/tz";
 
+import { DeleteIcon, EditIcon, FontIcon, ListIcon, TableIcon } from "./icons";
 import { CustomMDX } from "./mdx";
 import { Button } from "./ui/button";
 
@@ -36,7 +30,7 @@ function ControlBar() {
           aria-label="Delete this note"
           disabled
         >
-          <Trash2 className="text-primary size-5" />
+          <DeleteIcon className="text-primary size-5" />
         </Button>
       </div>
       <div className="space-x-1">
@@ -46,7 +40,7 @@ function ControlBar() {
           aria-label="Choose a style to apply to text"
           disabled
         >
-          <ALargeSmall className="text-primary size-5" />
+          <FontIcon className="text-primary size-5" />
         </Button>
         <Button
           size="icon-sm"
@@ -54,7 +48,7 @@ function ControlBar() {
           aria-label="Make a checklist"
           disabled
         >
-          <ListTodo className="text-primary size-5" />
+          <ListIcon className="text-primary size-5" />
         </Button>
         <Button
           size="icon-sm"
@@ -62,7 +56,7 @@ function ControlBar() {
           aria-label="Insert a table"
           disabled
         >
-          <Table className="text-primary size-5" />
+          <TableIcon className="text-primary size-5" />
         </Button>
       </div>
       <div className="space-x-1">
@@ -72,7 +66,7 @@ function ControlBar() {
           aria-label="Create a new note"
           disabled
         >
-          <SquarePen className="text-primary size-5" />
+          <EditIcon className="text-primary size-5" />
         </Button>
       </div>
     </div>
